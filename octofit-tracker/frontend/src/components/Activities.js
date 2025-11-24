@@ -1,4 +1,3 @@
-import React, { useEffect, useState } from 'react';
 
 const Activities = () => {
   const [activities, setActivities] = useState([]);
@@ -19,13 +18,32 @@ const Activities = () => {
   }, [endpoint]);
 
   return (
-    <div>
-      <h2>Activities</h2>
-      <ul>
-        {activities.map((a, i) => (
-          <li key={i}>{a.user} - {a.activity_type} - {a.duration} min</li>
-        ))}
-      </ul>
+    <div className="card mb-4">
+      <div className="card-body">
+        <h2 className="card-title mb-4 text-primary">Activities</h2>
+        <div className="table-responsive">
+          <table className="table table-striped table-hover">
+            <thead className="table-dark">
+              <tr>
+                <th>User</th>
+                <th>Activity Type</th>
+                <th>Duration (min)</th>
+                <th>Date</th>
+              </tr>
+            </thead>
+            <tbody>
+              {activities.map((a, i) => (
+                <tr key={i}>
+                  <td>{a.user}</td>
+                  <td>{a.activity_type}</td>
+                  <td>{a.duration}</td>
+                  <td>{a.date}</td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </div>
+      </div>
     </div>
   );
 };
